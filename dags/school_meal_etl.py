@@ -103,7 +103,7 @@ with DAG(
 
         hook = S3Hook(aws_conn_id="aws_default")
         hook.load_string(
-            string_data=str(meal_data),
+            string_data=json.dumps(meal_data),
             key=f"{date.strftime('%Y%m%d')}/{code}.json",
             bucket_name=BUCKET_NAME,
             replace=True,
